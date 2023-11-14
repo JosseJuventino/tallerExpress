@@ -1,6 +1,6 @@
 const httpError = require("http-errors");
 
-const Student = require("../model/Student.model");
+const Student = require("../models/Student.model");
 
 const getAllStudents = async (req, res, next) => {
   try {
