@@ -10,11 +10,14 @@ const {
 router.get('/', getAllStudents);
 router.post('/', createStudent);
 
-const { createStudentValidator, idInParams } = require('../validators/student.validator');
-const {runValidation} = require('../middlewares/validator.middleware');
+const {
+  createStudentValidator,
+  idInParams,
+} = require("../validators/Student.validators");
+const { runValidation } = require("../middlewares/validator.middleware");
 
-router.post('/', createStudentValidator, runValidation, createStudent);
-router.get('/', idInParams, runValidation, getStudentById);
+router.post("/", createStudentValidator, runValidation, createStudent);
+router.get("/", idInParams, runValidation, getAllStudents);
 
 
 module.exports = router;
