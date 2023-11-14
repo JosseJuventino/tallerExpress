@@ -1,11 +1,11 @@
-const express = require('express');
-const reouter = express.Router();
+const express = require("express");
+const router = express.Router();
 
 const {
-    getAllStudents,
-    createStudent,
-} = require('../controllers/student.controller');
-const { route } = require('express/lib/application');
+  getAllStudents,
+  createStudent,
+} = require("../controllers/student.controller");
+// const { route } = require("express/lib/application");
 
 router.get('/', getAllStudents);
 router.post('/', createStudent);
@@ -14,7 +14,7 @@ const { createStudentValidator, idInParams } = require('../validators/student.va
 const {runValidation} = require('../middlewares/validator.middleware');
 
 router.post('/', createStudentValidator, runValidation, createStudent);
-router.get('/:id', idInParams, runValidation, getStudentById);
+router.get('/', idInParams, runValidation, getStudentById);
 
 
 module.exports = router;
