@@ -7,9 +7,6 @@ const {
 } = require("../controllers/student.controller");
 // const { route } = require("express/lib/application");
 
-router.get('/', getAllStudents);
-router.post('/', createStudent);
-
 const {
   createStudentValidator,
   idInParams,
@@ -17,7 +14,7 @@ const {
 const { runValidation } = require("../middlewares/validator.middleware");
 
 router.post("/", createStudentValidator, runValidation, createStudent);
-router.get("/", idInParams, runValidation, getAllStudents);
+router.get("/", getAllStudents);
 
 
 module.exports = router;

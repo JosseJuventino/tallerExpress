@@ -6,7 +6,7 @@ const getAllStudents = async (req, res, next) => {
   try {
     const students = await Student.find();
     if (!students) throw httpError(404, "Student not found");
-    res.status(200).json({ data: movies });
+    res.status(200).json({ data: students });
   } catch (err) {
     next(err);
   }
@@ -14,8 +14,8 @@ const getAllStudents = async (req, res, next) => {
 
 const createStudent = async (req, res, next) => {
   try {
-    const { body } = req;
-    const newStudent = new Student(body);
+    const { carnet, nombre, carrera, promedioNotas } = req.body;
+    const newStudent = new Student({ carnet, nombre, carrera, promedioNotas });
     const savedStudent = await newStudent.save();
 
     if (!savedStudent) throw httpError(500, "Student not created");
